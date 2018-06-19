@@ -7,10 +7,10 @@ export const jokeRequest = () => {
   };
 }
 
-export const jokeSuccess = (jokes) => {
+export const jokeSuccess = (joke) => {
   return {
     type: constants.JOKE_GET_SUCCESS,
-    jokes
+    joke
   };
 }
 
@@ -50,7 +50,8 @@ export const fetchJokeCategories = () => {
       .then(response => {
         console.log("response action", response);
         dispatch(categoriesSuccess(response.data));
-      }).catch(error => {
+      })
+      .catch(error => {
         console.log("error", error);
         dispatch(categoriesFailure(error));
       })
@@ -58,4 +59,20 @@ export const fetchJokeCategories = () => {
   };
 }
 
+export const fetchRandomJoke = (category) => {
+  return (dispatch) => {
+    dispatch(jokeRequest());
 
+    return (
+      axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
+      .then(response => {
+        console.log("response action", response);
+        dispatch(jokeSuccess(response.data));
+      })
+      .catch(error => {
+        console.log("error", error);
+        dispatch(jokeFailure(error));
+      })
+    )
+  }
+}

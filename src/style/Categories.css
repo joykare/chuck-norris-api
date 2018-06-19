@@ -1,0 +1,42 @@
+.cards-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ant-card.category-card{
+  width: 300px;
+  margin: 20px 50px;
+  min-height: 150px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 8px gray;
+  border-color: gray;
+}
+
+.ant-card-hoverable.ant-card.category-card:hover{
+  box-shadow: 0 2px 8px #1890ff;
+  border-color: #1890ff;
+}
+
+.loading-spinner{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vertical-center-modal .ant-modal {
+  top: 0;
+}
+
+.ant-modal-body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
