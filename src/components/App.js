@@ -10,15 +10,15 @@ const store = configureStore();
 
 class App extends Component {
   render() {
-		return (
-			<Provider store={store}>
-				<div style={{ display: "flex", flexDirection: "column", backgroundColor:"#b6acac33", minHeight: "100%"}}>
-					<div className="navbar">Chuck Norris Jokes</div>
-					<Categories />
-				</div>
-			</Provider>
-		)
-	}
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <div className="navbar">Chuck Norris Jokes</div>
+          <Categories />
+        </div>
+      </Provider>
+    )
+  }
 }
 
 export default App;

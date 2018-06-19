@@ -1,3 +1,9 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  background-color: #b6acac33;
+  min-height: 100%
+}
 .navbar{
   z-index: 1;
   width: 100%;
