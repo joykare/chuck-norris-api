@@ -1,23 +1,25 @@
+import * as actionTypes from "../constants";
+
 const INITIAL_STATE = {
   isFetching: false,
   error: null,
   joke: {}
 }
 
-export default (state=INITIAL_STATE, action) => {
+const jokeReducer = (state=INITIAL_STATE, action) => {
   switch(action.type) {
-    case actionType.JOKE_GET_REQUEST:
+    case actionTypes.JOKE_GET_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
         error: null
       })
-    case actionType.JOKE_GET_SUCCESS:
+    case actionTypes.JOKE_GET_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         error: null,
         joke: action.joke
       })
-    case actionType.JOKE_GET_FAILURE:
+    case actionTypes.JOKE_GET_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         error: action.error
@@ -26,3 +28,5 @@ export default (state=INITIAL_STATE, action) => {
       return state
   }
 }
+
+export default jokeReducer;

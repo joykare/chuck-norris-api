@@ -1,0 +1,20 @@
+.navbar{
+  z-index: 1;
+  width: 100%;
+  background: #fff;
+  padding: 0 50px;
+  height: 64px;
+  line-height: 64px;
+  flex: 0 0 auto;
+  box-shadow: 0 4px 2px -2px gray;
+  font-size: 25px;
+}
+
+.breadcrumb{
+  margin: 50px 50px 0 50px;
+  font-size: 20px;
+  flex: 0 0 auto;
+  border-bottom: 5px solid #0093ff;
+  border-bottom-width: 5px;
+  width: 155px;
+}
