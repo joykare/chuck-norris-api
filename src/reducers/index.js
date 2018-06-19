@@ -3,23 +3,23 @@ import * as actionTypes from "../constants";
 const INITIAL_STATE = {
   isFetching: false,
   error: null,
-  joke: {}
+  categories: []
 }
 
 const jokeReducer = (state=INITIAL_STATE, action) => {
   switch(action.type) {
-    case actionTypes.JOKE_GET_REQUEST:
+    case actionTypes.CATEGORIES_GET_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
         error: null
       })
-    case actionTypes.JOKE_GET_SUCCESS:
+    case actionTypes.CATEGORIES_GET_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         error: null,
-        joke: action.joke
+        categories: action.categories
       })
-    case actionTypes.JOKE_GET_FAILURE:
+    case actionTypes.CATEGORIES_GET_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         error: action.error

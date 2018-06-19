@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as constants from "../constants";
 
 export const jokeRequest = () => {
   return {
@@ -6,10 +7,10 @@ export const jokeRequest = () => {
   };
 }
 
-export const jokeSuccess = (joke) => {
+export const jokeSuccess = (jokes) => {
   return {
     type: constants.JOKE_GET_SUCCESS,
-    joke
+    jokes
   };
 }
 
@@ -20,19 +21,41 @@ export const jokeFailure = (error) => {
   };
 }
 
-export const fetchDoc = () => {
+export const categoriesRequest = () => {
+  return {
+    type: constants.CATEGORIES_GET_REQUEST
+  };
+}
+
+export const categoriesSuccess = (categories) => {
+  return {
+    type: constants.CATEGORIES_GET_SUCCESS,
+    categories
+  };
+}
+
+export const categoriesFailure = (error) => {
+  return {
+    type: constants.CATEGORIES_GET_FAILURE,
+    error
+  };
+}
+
+export const fetchJokeCategories = () => {
   return (dispatch) => {
-    dispatch(jokeRequest());
+    dispatch(categoriesRequest());
 
     return (
-      axios.get("https://api.chucknorris.io/jokes/random")
+      axios.get("https://api.chucknorris.io/jokes/categories")
       .then(response => {
-        console.log("response", response);
-        dispatch(jokeSuccess(response.body));
+        console.log("response action", response);
+        dispatch(categoriesSuccess(response.data));
       }).catch(error => {
         console.log("error", error);
-        dispatch(jokeFailure(error));
+        dispatch(categoriesFailure(error));
       })
     );
   };
 }
+
+
