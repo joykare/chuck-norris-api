@@ -49,11 +49,9 @@ export const fetchJokeCategories = () => {
     return (
       axios.get("https://api.chucknorris.io/jokes/categories")
       .then(response => {
-        console.log("response action", response);
         dispatch(categoriesSuccess(response.data));
       })
       .catch(error => {
-        console.log("error", error);
         dispatch(categoriesFailure(error));
       })
     );
@@ -67,11 +65,9 @@ export const fetchRandomJoke = (category) => {
     return (
       axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
       .then(response => {
-        console.log("response action", response);
         dispatch(jokeSuccess(response.data));
       })
       .catch(error => {
-        console.log("error", error);
         dispatch(jokeFailure(error));
       })
     )

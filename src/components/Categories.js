@@ -19,7 +19,6 @@ class Categories extends Component {
   }
 
   handleClick = (event) => {
-    console.log("event", event.target);
     const category = event.target.textContent;
 
     this.setState({ category });
@@ -34,13 +33,10 @@ class Categories extends Component {
   }
 
   checkLoading(category) {
-    console.log("message", this.props.isFetchingJoke, category, this.props.category);
-    console.log("=========", this.props.isFetchingJoke && category === this.props.category);
     return this.props.isFetchingJoke && category === this.props.category;
   }
 
   render() {
-    console.log("this.props", this.props);
     return (
       <Fragment>
         <div className="breadcrumb"> Categories</div>
@@ -56,7 +52,7 @@ class Categories extends Component {
                 loading={this.checkLoading(category)}
                 value={category}
                 onClick={this.handleClick}>
-                <p>{category}</p>
+                <span>{category}</span>
               </Card>
             ))}
           </div>
