@@ -19,6 +19,7 @@ class Categories extends Component {
   }
 
   handleClick = (event) => {
+    console.log("event", event.target);
     const category = event.target.textContent;
 
     this.setState({ category });
@@ -30,6 +31,12 @@ class Categories extends Component {
 
   setModalVisible(modalVisiblity) {
     this.setState({ modalVisiblity });
+  }
+
+  checkLoading(category) {
+    console.log("message", this.props.isFetchingJoke, category, this.props.category);
+    console.log("=========", this.props.isFetchingJoke && category === this.props.category);
+    return this.props.isFetchingJoke && category === this.props.category;
   }
 
   render() {
@@ -46,7 +53,7 @@ class Categories extends Component {
                 key={i}
                 hoverable
                 className="category-card"
-                loading={this.props.isFetchingJoke}
+                loading={this.checkLoading(category)}
                 value={category}
                 onClick={this.handleClick}>
                 <p>{category}</p>
@@ -62,8 +69,9 @@ class Categories extends Component {
             visible={this.state.modalVisiblity}
             onOk={() => this.setModalVisible(false)}
             onCancel={() => this.setModalVisible(false)}
+            closable={false}
           >
-            <img src={this.props.joke.icon_url} />
+            <img src={this.props.joke.icon_url} alt="" />
             <p>{this.props.joke.value}</p>
           </Modal>
         }
@@ -78,6 +86,7 @@ const mapStateToProps = state => {
     isFetchingJoke: state.jokeReducer.isFetching,
     categories: state.categoryReducer.categories,
     joke: state.jokeReducer.joke,
+    category: state.jokeReducer.category
   };
 }
 

@@ -1,9 +1,10 @@
 import axios from "axios";
 import * as constants from "../constants";
 
-export const jokeRequest = () => {
+export const jokeRequest = (category) => {
   return {
-    type: constants.JOKE_GET_REQUEST
+    type: constants.JOKE_GET_REQUEST,
+    category
   };
 }
 
@@ -61,7 +62,7 @@ export const fetchJokeCategories = () => {
 
 export const fetchRandomJoke = (category) => {
   return (dispatch) => {
-    dispatch(jokeRequest());
+    dispatch(jokeRequest(category));
 
     return (
       axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)

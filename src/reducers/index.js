@@ -24,18 +24,19 @@ const categoryReducer = ( state = { isFetching: false, error: null, categories: 
   }
 }
 
-const jokeReducer = ( state = { isFetching: false, error: null, joke: {} }, action) => {
+const jokeReducer = ( state = { isFetching: false, error: null, joke: {}, category:"" }, action) => {
   switch(action.type) {
     case actionTypes.JOKE_GET_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
-        error: null
+        error: null,
+        category: action.category
       })
     case actionTypes.JOKE_GET_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         error: null,
-        joke: action.joke
+        joke: action.joke,
       })
     case actionTypes.JOKE_GET_FAILURE:
       return Object.assign({}, state, {
